@@ -1,17 +1,23 @@
 class ListingsController < ApplicationController
 
   def new
+    # Format API payload
+    payload = params['payload']
+    logger.info "="*40
+    logger.info "Confirming logger.info works"*40
+    logger.ap "Confirming logger.ap works"*40
+    puts "Confirming puts works"*40
+    logger.info "="*40
     # Puts payload information
     logger.info "="*40
-    logger.info params['payload'].to_json.symbolize_json
-    logger.info "="*40
+    logger.info payload
+    logger.info "-"*40
 
-    # Format API payload
-    payload = params['payload'].to_json.symbolize_json
+
     # Process payload into listing
     listing = Listing.process_payload(payload)
     # Validate listing is for NFL ALL DAY
-    return not_nfl_all_day_transaction(listing) unless listing.contract_slug == :nfl_all_day
+    return not_nfl_all_day_transaction(listing) unless listing.contract_slug == "nfl_all_day"
 
     # Puts data about listing transaction
     logger.info "Transaction: #{listing.transaction_id}"

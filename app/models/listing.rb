@@ -1,7 +1,7 @@
 class Listing < ApplicationRecord
-  belongs_to :moment
-  belongs_to :user
-  belongs_to :moment_mint
+  belongs_to :moment, optional: true
+  belongs_to :user, optional: true
+  belongs_to :moment_mint, optional: true
 
   after_create :initialize_payload
   after_save :populate_slug, :populate_serial
@@ -30,7 +30,7 @@ class Listing < ApplicationRecord
     update_column(:serial, nft_serial - moment.nft_low_serial + 1) # Extra 1 needed to account for no 0 mint
   end
 
-  def process_payload(payload)
+  def self.process_payload(payload)
     listing = Listing.create(processing_status: :new)
     # Populate listing details
     listing.payload = payload
@@ -46,14 +46,16 @@ class Listing < ApplicationRecord
     listing.contract_slug = :nfl_all_day if listing.contract == "A.e4cf4bdc1751c65d.AllDay.NFT"
     listing.processing_status = :payload_saved
     # Identify moment based on nft_serial
-    if moment = Moment.find_by_nft_serial(nft_serial)
+    if moment = Moment.find_by_nft_serial(listing.nft_serial)
       listing.moment = moment
       listing.processing_status = :moment_identified
     end
+    listing.save # Ensure listing is saved
+    puts listing.errors.inspect
     # return new listing
     listing
-  ensure
-    listing.save # Ensure listing is saved
+  # ensure
+  #   listing.save # Ensure listing is saved
   end
 
   def flowscan_transactions_url

@@ -1,9 +1,9 @@
 class CreateListings < ActiveRecord::Migration[7.0]
   def change
     create_table :listings do |t|
-      t.belongs_to :moment, null: false, foreign_key: true
-      t.belongs_to :user, null: false, foreign_key: true
-      t.belongs_to :moment_mint, null: false, foreign_key: true
+      t.belongs_to :moment, null: true, foreign_key: true
+      t.belongs_to :user, null: true, foreign_key: true
+      t.belongs_to :moment_mint, null: true, foreign_key: true
       t.string :slug
       t.integer :serial
       t.integer :nft_serial

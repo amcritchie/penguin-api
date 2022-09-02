@@ -177,3 +177,6 @@ mahomes_s1_rare_350.user_id = patty_user.id
 mahomes_s1_rare_350.nflallday_mint_id = "c69c6ce3-551c-4730-ad24-498f8fcbf339"
 mahomes_s1_rare_350.nft_serial = 688081
 mahomes_s1_rare_350.save
+
+puts "Create listing ===="
+Listing.create(processing_status: :new)

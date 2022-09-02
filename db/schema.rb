@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_031154) do
   enable_extension "plpgsql"
 
   create_table "listings", force: :cascade do |t|
-    t.bigint "moment_id", null: false
-    t.bigint "user_id", null: false
-    t.bigint "moment_mint_id", null: false
+    t.bigint "moment_id"
+    t.bigint "user_id"
+    t.bigint "moment_mint_id"
     t.string "slug"
     t.integer "serial"
     t.integer "nft_serial"
@@ -45,8 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_031154) do
   end
 
   create_table "moment_mints", force: :cascade do |t|
-    t.bigint "moment_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "moment_id"
+    t.bigint "user_id"
     t.string "slug"
     t.integer "serial"
     t.integer "nft_serial"

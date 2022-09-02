@@ -1,6 +1,6 @@
 class MomentMint < ApplicationRecord
-  belongs_to :moment
-  belongs_to :user
+  belongs_to :moment, optional: true
+  belongs_to :user, optional: true
   has_many :listings
 
   after_save :populate_slug
