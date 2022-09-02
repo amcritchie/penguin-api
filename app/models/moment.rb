@@ -1,5 +1,6 @@
 class Moment < ApplicationRecord
   has_many :moment_mints
+  has_many :listings
 
   after_create :initialize_badges
   after_save :populate_high_serial
@@ -19,11 +20,16 @@ class Moment < ApplicationRecord
     update_column(:nft_high_serial, nft_high_serial)
   end
 
-  def self.calculate_low_serial(mint_serial=29,nft_serial=3172250)
-    nft_serial - mint_serial + 1 # Extra 1 needed to account for no 0 mint
+  def self.calculate_low_serial(serial=29,nft_serial=3172250)
+    nft_serial - serial + 1 # Extra 1 needed to account for no 0 mint
   end
 
   def self.calculate_high_serial(mint_count=29,nft_low_serial=3172222)
     nft_low_serial + mint_count - 1 # 1 is removed to account for no 0 mint
+  end
+
+  def self.find_by_nft_serial(nft_serial)
+    # Find moment where nft_serial is between the moment nft_low_serial and nft_high_serial.
+    find_by("#{nft_serial} >= nft_low_serial AND #{nft_serial} <= nft_high_serial")
   end
 end

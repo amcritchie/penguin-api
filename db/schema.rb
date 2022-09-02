@@ -10,13 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_01_215630) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_02_031154) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listings", force: :cascade do |t|
+    t.bigint "moment_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "moment_mint_id", null: false
+    t.string "slug"
+    t.integer "serial"
+    t.integer "nft_serial"
+    t.string "price"
+    t.string "contract"
+    t.string "transaction_id"
+    t.json "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract"], name: "index_listings_on_contract"
+    t.index ["created_at"], name: "index_listings_on_created_at"
+    t.index ["moment_id"], name: "index_listings_on_moment_id"
+    t.index ["moment_mint_id"], name: "index_listings_on_moment_mint_id"
+    t.index ["nft_serial"], name: "index_listings_on_nft_serial"
+    t.index ["price"], name: "index_listings_on_price"
+    t.index ["serial"], name: "index_listings_on_serial"
+    t.index ["slug"], name: "index_listings_on_slug"
+    t.index ["transaction_id"], name: "index_listings_on_transaction_id"
+    t.index ["updated_at"], name: "index_listings_on_updated_at"
+    t.index ["user_id"], name: "index_listings_on_user_id"
+  end
 
   create_table "moment_mints", force: :cascade do |t|
     t.bigint "moment_id", null: false
     t.bigint "user_id", null: false
+    t.string "slug"
     t.integer "serial"
     t.integer "nft_serial"
     t.string "nflallday_mint_id"
@@ -31,6 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_215630) do
     t.index ["nflallday_mint_id"], name: "index_moment_mints_on_nflallday_mint_id"
     t.index ["nft_serial"], name: "index_moment_mints_on_nft_serial"
     t.index ["serial"], name: "index_moment_mints_on_serial"
+    t.index ["slug"], name: "index_moment_mints_on_slug"
     t.index ["updated_at"], name: "index_moment_mints_on_updated_at"
     t.index ["user_id"], name: "index_moment_mints_on_user_id"
   end
@@ -61,6 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_215630) do
     t.index ["nft_high_serial"], name: "index_moments_on_nft_high_serial"
     t.index ["nft_low_serial"], name: "index_moments_on_nft_low_serial"
     t.index ["player_name"], name: "index_moments_on_player_name"
+    t.index ["slug"], name: "index_moments_on_slug"
     t.index ["tier"], name: "index_moments_on_tier"
     t.index ["updated_at"], name: "index_moments_on_updated_at"
   end
@@ -81,6 +110,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_215630) do
     t.index ["updated_at"], name: "index_users_on_updated_at"
   end
 
+  add_foreign_key "listings", "moment_mints"
+  add_foreign_key "listings", "moments"
+  add_foreign_key "listings", "users"
   add_foreign_key "moment_mints", "moments"
   add_foreign_key "moment_mints", "users"
 end

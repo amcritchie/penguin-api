@@ -22,6 +22,7 @@ class CreateMoments < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :moments, :slug
     add_index :moments, :player_name
     add_index :moments, :tier
     add_index :moments, :mint_count

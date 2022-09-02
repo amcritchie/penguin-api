@@ -3,6 +3,7 @@ class CreateMomentMints < ActiveRecord::Migration[7.0]
     create_table :moment_mints do |t|
       t.belongs_to :moment, null: false, foreign_key: true
       t.belongs_to :user, null: false, foreign_key: true
+      t.string :slug
       t.integer :serial
       t.integer :nft_serial
       t.string :nflallday_mint_id
@@ -11,6 +12,7 @@ class CreateMomentMints < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+    add_index :moment_mints, :slug
     add_index :moment_mints, :serial
     add_index :moment_mints, :nft_serial
     add_index :moment_mints, :nflallday_mint_id

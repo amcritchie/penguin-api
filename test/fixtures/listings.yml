@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  moment: one
+  user: one
+  moment_mint: one
+  contract: MyString
+  transaction_id: MyString
+  price: MyString
+  serial: 1
+  nft_serial: 1
+  details: 
+
+two:
+  moment: two
+  user: two
+  moment_mint: two
+  contract: MyString
+  transaction_id: MyString
+  price: MyString
+  serial: 1
+  nft_serial: 1
+  details: 

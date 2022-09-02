@@ -1,0 +1,33 @@
+<h1>
+  Moments
+</h1>
+
+<hr>
+<% @moments.each do |moment| %>
+    <img width="200" style="float: left" src="<%= moment.image_url %>">
+    <div style="widdth: 80%; ffloat: right">
+      <br>
+      <h3>
+        <%= moment.player_name %>
+      </h3>
+      <h5>
+        Lowest NFT #<%= number_with_delimiter(moment.nft_low_serial, :delimiter => ',') %>
+      </h5>
+      <h5>
+        <% if moment.badges.include? 'rookie_year' %> <span style='color: red'>Rookie Year</span> <% end %>
+        <% if moment.badges.include? 'championship_year' %> <span style='color: orange'>Championship Year</span> <% end %>
+        <% if moment.badges.include? 'minted_rookie_year' %> <span style='color: blue'>Minted Rookie Year</span> <% end %>
+        <% if moment.badges.include? 'debut' %> <span style='color: green'>Debut</span> <% end %>
+      </h5>
+      <h6>
+        <%= moment.series %> | <%= moment.tier %> | Mint Count #<%= moment.mint_count %>
+      </h6>
+      <br>
+      <%= moment.description %>
+      <br>
+      <% moment.listings.each do |listing| %>
+        #<%= listing.serial %> / #<%= moment.mint_count %> | $<%= listing.price %> | <%= listing.created_at %>
+      <% end %>
+    </div>
+  <hr>
+<% end %>
