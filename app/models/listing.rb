@@ -39,7 +39,7 @@ class Listing < ApplicationRecord
     listing.primary_event = payload['data']['events'][0]
     # Save details
     listing.contract = listing.primary_event['data']['nftType']['typeID']
-    listing.nft_serial = listing.primary_event['data']['listingResourceID']
+    listing.nft_serial = listing.primary_event['data']['nftType']['nftID']
     listing.transaction_id = listing.primary_event['data']['listingResourceID']
     listing.price = listing.primary_event['data']['price'].to_f * 100 # Price in cents
     # Identify if contract is NFL ALL DAY contract

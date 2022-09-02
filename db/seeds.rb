@@ -79,6 +79,7 @@ mooney_s1_common_8573.save
 
 # Find Brady common low serial for identification
 brady_s1_common_low_serial = Moment.calculate_low_serial(3001,577428)
+# brady_s1_common_low_serial = Moment.calculate_low_serial(4210,578637)
 # Find or create Brady common
 brady_s1_common = Moment.find_or_create_by(nft_low_serial: brady_s1_common_low_serial)
 # Update additional fields
