@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
     payload = params['payload']
     logger.info "="*40
     logger.info "Confirming logger.info works"*40
-    logger.ap "Confirming logger.ap works"*40
+    # logger.ap "Confirming logger.ap works"*40
     puts "Confirming puts works"*40
     logger.info "="*40
     # Puts payload information
