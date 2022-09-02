@@ -8,8 +8,12 @@ class CreateListings < ActiveRecord::Migration[7.0]
       t.integer :serial
       t.integer :nft_serial
       t.string :price
+      t.string :contract_slug
       t.string :contract
       t.string :transaction_id
+      t.string :processing_status
+      t.integer :events_count
+      t.json :primary_event
       t.json :payload
 
       t.timestamps

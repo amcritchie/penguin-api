@@ -29,4 +29,34 @@ class Listing < ApplicationRecord
     # Calculate listing's serial based on nft_low_serial
     update_column(:serial, nft_serial - moment.nft_low_serial + 1) # Extra 1 needed to account for no 0 mint
   end
+
+  def process_payload(payload)
+    listing = Listing.create(processing_status: :new)
+    # Populate listing details
+    listing.payload = payload
+    listing.transaction_id = payload['data']['transactionId']
+    listing.events_count = payload['data']['events'].length
+    listing.primary_event = payload['data']['events'][0]
+    # Save details
+    listing.contract = listing.primary_event['data']['nftType']['typeID']
+    listing.nft_serial = listing.primary_event['data']['listingResourceID']
+    listing.transaction_id = listing.primary_event['data']['listingResourceID']
+    listing.price = listing.primary_event['data']['price'].to_f * 100 # Price in cents
+    # Identify if contract is NFL ALL DAY contract
+    listing.contract_slug = :nfl_all_day if listing.contract == "A.e4cf4bdc1751c65d.AllDay.NFT"
+    listing.processing_status = :payload_saved
+    # Identify moment based on nft_serial
+    if moment = Moment.find_by_nft_serial(nft_serial)
+      listing.moment = moment
+      listing.processing_status = :moment_identified
+    end
+    # return new listing
+    listing
+  ensure
+    listing.save # Ensure listing is saved
+  end
+
+  def flowscan_transactions_url
+    "https://flowscan.org/transaction/#{transaction_id}"
+  end
 end

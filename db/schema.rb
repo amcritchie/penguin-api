@@ -22,8 +22,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_031154) do
     t.integer "serial"
     t.integer "nft_serial"
     t.string "price"
+    t.string "contract_slug"
     t.string "contract"
     t.string "transaction_id"
+    t.string "processing_status"
+    t.integer "events_count"
+    t.json "primary_event"
     t.json "payload"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
