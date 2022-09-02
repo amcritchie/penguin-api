@@ -1,0 +1,2 @@
+class MomentMintsController < ApplicationController
+end

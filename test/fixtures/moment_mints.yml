@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  moment: one
+  user: one
+  serial: 1
+  nfl_serial: 1
+  burned: false
+  minted_at: 2022-09-01 15:56:30
+
+two:
+  moment: two
+  user: two
+  serial: 1
+  nfl_serial: 1
+  burned: false
+  minted_at: 2022-09-01 15:56:30
