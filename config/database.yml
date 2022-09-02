@@ -84,5 +84,7 @@ test:
 production:
   <<: *default
   database: penguin_api_production
-  username: penguin_api
-  password: <%= ENV["PENGUIN_API_DATABASE_PASSWORD"] %>
+  username: penguin_api                                 # This is currently working with Heroku.
+  password: <%= ENV["PENGUIN_API_DATABASE_PASSWORD"] %> # This is currently working with Heroku.
+  # username: <%= ENV["POSTGRES_USERNAME"] %>
+  # password: <%= ENV["POSTGRES_PASSWORD"] %>

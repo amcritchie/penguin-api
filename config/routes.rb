@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Endpoint for processing new flow listings
-  post "api/listing/new" => "listing#new"
+  post "api/listing/new" => "listings#new"
 
   # Defines the root path route ("/")
   root "moments#index"
