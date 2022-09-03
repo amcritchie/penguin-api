@@ -179,5 +179,42 @@ mahomes_s1_rare_350.nflallday_mint_id = "c69c6ce3-551c-4730-ad24-498f8fcbf339"
 mahomes_s1_rare_350.nft_serial = 688081
 mahomes_s1_rare_350.save
 
+
+
+# ========================================
+# Evan McPherson S1 common
+# ========================================
+
+# Find McPherson common low serial for identification
+mcpherson_s1_common_low_serial = Moment.calculate_low_serial(833,752287)
+# Find or create McPherson common
+mcpherson_s1_common = Moment.find_or_create_by(nft_low_serial: mcpherson_s1_common_low_serial)
+# Update additional fields
+mcpherson_s1_common.slug = :mcpherson_s1_common
+mcpherson_s1_common.player_name = "EVAN MCPHERSON"
+mcpherson_s1_common.team_name = "Cincinnati Bengals"
+mcpherson_s1_common.position = :k
+mcpherson_s1_common.mint_count = 10000
+mcpherson_s1_common.tier = :common
+mcpherson_s1_common.play_type = :field_goal
+mcpherson_s1_common.series = "Series 1"
+mcpherson_s1_common.set = "Base"
+mcpherson_s1_common.badges = [:rookie_year, :minted_rookie_year, :debut]
+mcpherson_s1_common.game_summary = "DEN 10 - 15 CIN"
+mcpherson_s1_common.moment_on = "2021-12-19" #YYYY-MM-DD
+mcpherson_s1_common.week = "Week 15"
+mcpherson_s1_common.contract = "A.e4cf4bdc1751c65d.AllDay"
+mcpherson_s1_common.description = "A quick pickup into Denver territory before the half gave Evan McPherson the opportunity to put the Bengals ahead before the break and he took advantage. He booted it through from 58 yards out and Cincinnati took a 6-3 lead into the locker room. McPherson converted all three of his field goals on the day and the Bengals would go on to win, 15-10, on Dec. 19, 2021."
+mcpherson_s1_common.image_url = "https://assets.nflallday.com/editions/base/79bb6a75-c940-47aa-985f-23c567a86f11/play_79bb6a75-c940-47aa-985f-23c567a86f11_base_capture_Hero_Trans_2880_2880_Transparent.png"
+mcpherson_s1_common.discord_channel_webhook = ENV["CUSTOM_WEBHOOK_CHANNEL"]
+mcpherson_s1_common.save
+
+# Find or create McPherson rare #350
+mcpherson_s1_common_833 = mcpherson_s1_common.moment_mints.find_or_create_by(serial: 833)
+# Update additional fields
+mcpherson_s1_common_833.nflallday_mint_id = "6d915c78-c1f8-4051-a229-f49a68dbb7c7"
+mcpherson_s1_common_833.nft_serial = 752287
+mcpherson_s1_common_833.save
+
 puts "Create listing ===="
 Listing.create(processing_status: :new)

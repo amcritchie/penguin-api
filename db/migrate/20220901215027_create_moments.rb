@@ -19,6 +19,7 @@ class CreateMoments < ActiveRecord::Migration[7.0]
       t.integer :nft_low_serial
       t.string :description
       t.string :image_url
+      t.string :discord_channel_webhook
 
       t.timestamps
     end

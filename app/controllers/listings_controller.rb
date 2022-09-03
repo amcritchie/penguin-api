@@ -22,8 +22,9 @@ class ListingsController < ApplicationController
     if listing.moment
       message = "Price: $#{listing.price.to_i/100} - #{listing.moment.player_name} - ##{listing.moment_mint.serial}"
       external_request = Discord.send_new_listing_to_discord(message)
+      # Send to custom server if moment has a specific discord channel.
+      external_request = Discord.send_new_listing_to_discord(message, listing.moment.discord_channel_webhook) if listing.moment.discord_channel_webhook
     end
-    # Do something if moment is interesting...
 
     render json: {request: :successful}, status: 200
   end
