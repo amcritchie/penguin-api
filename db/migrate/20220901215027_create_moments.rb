@@ -3,6 +3,7 @@ class CreateMoments < ActiveRecord::Migration[7.0]
     create_table :moments do |t|
       t.string :slug
       t.string :player_name
+      t.integer :player_number
       t.string :team_name
       t.string :position
       t.integer :mint_count
@@ -11,12 +12,15 @@ class CreateMoments < ActiveRecord::Migration[7.0]
       t.string :series
       t.string :set
       t.json :badges, default: []
+      t.string :discord_emoji_description
       t.string :game_summary
       t.date :moment_on
       t.string :week
       t.string :contract
       t.integer :nft_high_serial
       t.integer :nft_low_serial
+      t.string :nfl_all_day_moment_id
+      t.string :nfl_all_day_player_id
       t.string :description
       t.string :image_url
       t.string :discord_channel_webhook

@@ -24,4 +24,26 @@ class MomentMint < ApplicationRecord
   def nflallday_mint_url
     "https://nflallday.com/moments/#{nflallday_mint_id}"
   end
+
+  def serial_digit_emoji
+    # Find digits in serial
+    serial_digits = serial.digits.count
+    # Return emoji based on serial's digits
+    if serial_digits == 1     # 1 Digit: 1 - 9
+      ":blue_circle:"
+    elsif serial_digits == 2  # 2 Digits: 10 - 99
+      ":green_circle:"
+    elsif serial_digits == 3  # 3 Digits: 100 - 999
+      ":yellow_circle:"
+    elsif serial_digits == 4  # 4 Digits: 1000 - 9999
+      ":orange_circle:"
+    else
+      ":red_circle:"
+    end
+  end
+
+  def serial_message
+    # Return serial message for discord.
+    "#{serial_digit_emoji} ##{serial} / #{moment.mint_count}"
+  end
 end

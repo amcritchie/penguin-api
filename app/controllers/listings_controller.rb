@@ -20,7 +20,9 @@ class ListingsController < ApplicationController
     puts "-"*40
 
     if listing.moment
-      message = "Price: $#{listing.price.to_i/100} - #{listing.moment.player_name} - ##{listing.moment_mint.serial}"
+      # Create message
+      message = listing.discord_message
+      # Send listing to discord server.
       external_request = Discord.send_new_listing_to_discord(message)
       # Send to custom server if moment has a specific discord channel.
       external_request = Discord.send_new_listing_to_discord(message, listing.moment.discord_channel_webhook) if listing.moment.discord_channel_webhook

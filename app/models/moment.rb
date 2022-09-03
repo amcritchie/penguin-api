@@ -32,4 +32,24 @@ class Moment < ApplicationRecord
     # Find moment where nft_serial is between the moment nft_low_serial and nft_high_serial.
     find_by("#{nft_serial} >= nft_low_serial AND #{nft_serial} <= nft_high_serial")
   end
+
+  def discord_description
+    "#{discord_emoji_description} #{player_name}"
+  end
+
+  def discord_links
+    "[Moment](#{nflallday_moment_url}) | [Purchase](#{nflallday_purchase_url}) | [Search](#{nflallday_search_url})"
+  end
+
+  def nflallday_search_url
+    "https://nflallday.com/marketplace/moments?byPlayerIDs=#{nfl_all_day_player_id}&sortBy=LISTED_DATE_DESC"
+  end
+
+  def nflallday_moment_url
+    "https://nflallday.com/listing/moment/#{nfl_all_day_moment_id}"
+  end
+
+  def nflallday_purchase_url
+    "https://nflallday.com/listing/moment/#{nfl_all_day_moment_id}/select"
+  end
 end

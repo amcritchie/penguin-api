@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_214031) do
     t.string "slug"
     t.integer "serial"
     t.integer "nft_serial"
+    t.json "additional_badges", default: []
     t.string "nflallday_mint_id"
     t.boolean "burned"
     t.datetime "minted_at"
@@ -103,6 +104,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_214031) do
   create_table "moments", force: :cascade do |t|
     t.string "slug"
     t.string "player_name"
+    t.integer "player_number"
     t.string "team_name"
     t.string "position"
     t.integer "mint_count"
@@ -111,14 +113,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_214031) do
     t.string "series"
     t.string "set"
     t.json "badges", default: []
+    t.string "discord_emoji_description"
     t.string "game_summary"
     t.date "moment_on"
     t.string "week"
     t.string "contract"
     t.integer "nft_high_serial"
     t.integer "nft_low_serial"
+    t.string "nfl_all_day_moment_id"
+    t.string "nfl_all_day_player_id"
     t.string "description"
     t.string "image_url"
+    t.string "discord_channel_webhook"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["created_at"], name: "index_moments_on_created_at"

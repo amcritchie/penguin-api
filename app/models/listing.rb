@@ -71,4 +71,9 @@ class Listing < ApplicationRecord
   def flowscan_transactions_url
     "https://flowscan.org/transaction/#{transaction_id}"
   end
+
+  def discord_message
+    "#{moment_mint.serial_message} #{moment.discord_description}
+Price: $#{price.to_i/100} | #{moment.discord_links}"
+  end
 end
