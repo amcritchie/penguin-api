@@ -73,7 +73,7 @@ class Listing < ApplicationRecord
   end
 
   def discord_message
-    "#{moment_mint.serial_message} #{moment.discord_description}
-Price: $#{price.to_i/100} | #{moment.discord_links}"
+    "#{moment_mint.serial_message} #{moment.player_name} #{moment.discord_emoji_description} #{moment_mint.discord_badges}
+Price: $#{price.to_i/100} |#{moment.discord_links}"
   end
 end
