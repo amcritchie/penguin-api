@@ -2,14 +2,14 @@ class Moment < ApplicationRecord
   has_many :moment_mints
   has_many :listings
 
-  after_create :initialize_badges
+  # after_create :initialize_badges
   after_save :populate_high_serial
-
-  # Badges need to be initializes to empty array because a JSON type cannot have a [] default.
-  def initialize_badges
-    # Update badges to empty array.
-    update_column(:badges, []) if badges.nil?
-  end
+  #
+  # # Badges need to be initializes to empty array because a JSON type cannot have a [] default.
+  # def initialize_badges
+  #   # Update badges to empty array.
+  #   update_column(:badges, []) if badges.nil?
+  # end
 
   def populate_high_serial
     return nil unless nft_high_serial.nil?

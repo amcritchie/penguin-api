@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_02_031154) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_02_214031) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "external_requests", force: :cascade do |t|
+    t.string "key"
+    t.boolean "successful"
+    t.integer "execution_count", default: 0
+    t.datetime "last_executed_at"
+    t.string "response_status"
+    t.string "creator_type"
+    t.bigint "creator_id"
+    t.string "http_method", default: "post"
+    t.string "url"
+    t.boolean "ssl", default: true
+    t.json "headers", default: {}
+    t.json "params", default: {}
+    t.integer "request_duration_ms"
+    t.string "response_code"
+    t.json "response_body", default: {}
+    t.json "response_body_raw", default: {}
+    t.datetime "first_executed_at"
+    t.json "previous_responses", default: []
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_external_requests_on_created_at"
+    t.index ["creator_type", "creator_id"], name: "index_external_requests_on_creator"
+    t.index ["execution_count"], name: "index_external_requests_on_execution_count"
+    t.index ["first_executed_at"], name: "index_external_requests_on_first_executed_at"
+    t.index ["key"], name: "index_external_requests_on_key"
+    t.index ["last_executed_at"], name: "index_external_requests_on_last_executed_at"
+    t.index ["response_code"], name: "index_external_requests_on_response_code"
+    t.index ["response_status"], name: "index_external_requests_on_response_status"
+    t.index ["successful"], name: "index_external_requests_on_successful"
+    t.index ["updated_at"], name: "index_external_requests_on_updated_at"
+  end
 
   create_table "listings", force: :cascade do |t|
     t.bigint "moment_id"
@@ -27,8 +60,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_031154) do
     t.string "transaction_id"
     t.string "processing_status"
     t.integer "events_count"
-    t.json "primary_event"
-    t.json "payload"
+    t.json "primary_event", default: {}
+    t.json "payload", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contract"], name: "index_listings_on_contract"
@@ -77,7 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_031154) do
     t.string "play_type"
     t.string "series"
     t.string "set"
-    t.json "badges"
+    t.json "badges", default: []
     t.string "game_summary"
     t.date "moment_on"
     t.string "week"

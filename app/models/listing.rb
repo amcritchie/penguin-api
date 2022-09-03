@@ -3,14 +3,14 @@ class Listing < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :moment_mint, optional: true
 
-  after_create :initialize_payload
+  # after_create :initialize_payload
   after_save :populate_slug, :populate_serial
 
-  # Payload need to be initializes to empty object because a JSON type cannot have a {} default.
-  def initialize_payload
-    # Update payload to empty object.
-    update_column(:payload, {}) if payload.nil?
-  end
+  # # Payload need to be initializes to empty object because a JSON type cannot have a {} default.
+  # def initialize_payload
+  #   # Update payload to empty object.
+  #   update_column(:payload, {}) if payload.nil?
+  # end
 
   def populate_slug
     # Populate slug if moment or moment_mint was changed.
@@ -39,16 +39,6 @@ class Listing < ApplicationRecord
     listing.primary_event = payload['data']['events'][0]
     # Save details
     listing.contract = listing.primary_event['data']['nftType']['typeID']
-    puts '-1'
-    puts listing.primary_event
-    puts '-2'
-    puts listing.primary_event['data']
-    puts '-3'
-    puts listing.primary_event['data']['nftType']
-    puts '-4'
-    puts listing.primary_event['data']['typeID']
-    puts '-5'
-
     listing.nft_serial = listing.primary_event['data']['nftID']
     listing.transaction_id = listing.primary_event['data']['listingResourceID']
     listing.price = listing.primary_event['data']['price'].to_f * 100 # Price in cents
@@ -59,6 +49,16 @@ class Listing < ApplicationRecord
     if moment = Moment.find_by_nft_serial(listing.nft_serial)
       listing.moment = moment
       listing.processing_status = :moment_identified
+      # Idenfity moment_mint based on nft_serial
+      if moment_mint = moment.moment_mints.find_by(nft_serial: listing.nft_serial)
+        # moment_mint identified
+        listing.moment_mint = moment_mint
+        listing.processing_status = :moment_mint_identified
+      else
+        # Create new moment_mint
+        listing.moment_mint = moment.moment_mints.create(nft_serial: listing.nft_serial)
+        listing.processing_status = :moment_mint_created
+      end
     end
     listing.save # Ensure listing is saved
     puts listing.errors.inspect

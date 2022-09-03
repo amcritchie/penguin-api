@@ -10,7 +10,7 @@ class CreateMoments < ActiveRecord::Migration[7.0]
       t.string :play_type
       t.string :series
       t.string :set
-      t.json :badges
+      t.json :badges, default: []
       t.string :game_summary
       t.date :moment_on
       t.string :week

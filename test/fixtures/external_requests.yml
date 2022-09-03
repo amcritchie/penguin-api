@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  key: MyString
+  http_method: MyString
+  url: MyString
+  ssl: false
+  successful: false
+  execution_count: 1
+  last_executed_at: 2022-09-02 15:40:31
+  response_status: MyString
+  headers: 
+  params: 
+  response_code: MyString
+  response_body: 
+  response_body_raw: 
+  first_executed_at: 2022-09-02 15:40:31
+  previous_responses: 
+  creator: one
+
+two:
+  key: MyString
+  http_method: MyString
+  url: MyString
+  ssl: false
+  successful: false
+  execution_count: 1
+  last_executed_at: 2022-09-02 15:40:31
+  response_status: MyString
+  headers: 
+  params: 
+  response_code: MyString
+  response_body: 
+  response_body_raw: 
+  first_executed_at: 2022-09-02 15:40:31
+  previous_responses: 
+  creator: two

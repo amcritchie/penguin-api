@@ -13,8 +13,8 @@ class CreateListings < ActiveRecord::Migration[7.0]
       t.string :transaction_id
       t.string :processing_status
       t.integer :events_count
-      t.json :primary_event
-      t.json :payload
+      t.json :primary_event, default: {}
+      t.json :payload, default: {}
 
       t.timestamps
     end

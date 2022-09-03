@@ -19,6 +19,10 @@ class ListingsController < ApplicationController
     puts "Event [0] NFT Price: #{listing.price}"
     puts "-"*40
 
+    if listing.moment
+      message = "Price: $#{listing.price.to_i/100} - #{listing.moment.player_name} - ##{listing.moment_mint.serial}"
+      external_request = Discord.send_new_listing_to_discord(message)
+    end
     # Do something if moment is interesting...
 
     render json: {request: :successful}, status: 200
