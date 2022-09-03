@@ -280,12 +280,23 @@ herbert_s1_rare.save
 
 # Find or create Herbert rare 59
 herbert_s1_rare_59 = herbert_s1_rare.moment_mints.find_or_create_by(serial: 59)
+# https://flowscan.org/transaction/e87369d7abdbb5e43a0740ad2f80cfca7457bbc9a815905f10816f508c475c81
 # Update additional fields
 herbert_s1_rare_59.user_id = amcritchie_user.id
 herbert_s1_rare_59.nflallday_mint_id = "a6dce49d-eb7f-41ea-bab7-3645e85bc642"
 herbert_s1_rare_59.nft_serial = 340744
 herbert_s1_rare_59.latest_flow_transaction_id = 'e87369d7abdbb5e43a0740ad2f80cfca7457bbc9a815905f10816f508c475c81'
 herbert_s1_rare_59.save
+
+# Find or create Herbert rare 95
+herbert_s1_rare_95 = herbert_s1_rare.moment_mints.find_or_create_by(serial: 95)
+# https://flowscan.org/transaction/e201da1c08e84af1828f11c41f0c5d366ae6c1e41c0c5c5281fcb7315f180894
+# Update additional fields
+herbert_s1_rare_95.user_id = amcritchie_user.id
+herbert_s1_rare_95.nflallday_mint_id = "81b349af-0712-48c4-b867-02dcc130e722"
+herbert_s1_rare_95.nft_serial = 340780
+herbert_s1_rare_95.latest_flow_transaction_id = 'e201da1c08e84af1828f11c41f0c5d366ae6c1e41c0c5c5281fcb7315f180894'
+herbert_s1_rare_95.save
 
 # ========================================
 # Trey Lance S1 legendary

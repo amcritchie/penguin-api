@@ -26,9 +26,12 @@ class ExternalRequest < ApplicationRecord
     self.response_body_raw = request_response.body.inspect
     self.response_body = JSON.parse(request_response.body, symbolize:true) unless request_response.body.nil? # This goes last incase the symbolize_json fails
     # Evaluate response from Authorize.net
-    if self.response_code == '200'
+    if self.response_code == '204'
       self.successful = true
       self.response_status = 'action-successful'
+    elsif self.response_code == '429'
+      self.response_status = 'rate-limit-reached'
+      # https://discord.com/developers/docs/topics/rate-limits
     else
       self.response_status = 'unknown-response'
     end

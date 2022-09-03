@@ -17,7 +17,12 @@ class ListingsController < ApplicationController
     puts "Events: #{listing.events_count}"
     puts "Event [0] NFT Serial: #{listing.nft_serial}"
     puts "Event [0] NFT Price: #{listing.price}"
-    puts "-"*40
+    # Puts moment name if moment is known.
+    if listing.moment
+      puts "Moment: #{listing.moment.player_name}".blue
+    else
+      puts "Moment: Known moment".red
+    end
 
     if listing.moment
       # Create message
