@@ -30,6 +30,14 @@ patty_user.save
 # Collection: https://nflallday.com/user/PattyPump929
 # Transactions: https://flowscan.org/account/0xe47c89826f17896b
 
+# Find or create flpx user (Trey Lance)
+flpx_user = User.find_or_create_by(dapper_username: :flpx)
+# Update additional fields
+flpx_user.flow_account = "0x8a2201d25aef092d"
+flpx_user.save
+# Collection: https://nflallday.com/user/flpx
+# Transactions: https://flowscan.org/account/0x8a2201d25aef092d
+
 # ========================================
 # Darnell Mooney S1 common
 # ========================================
@@ -75,6 +83,7 @@ mooney_s1_common_8573 = mooney_s1_common.moment_mints.find_or_create_by(serial: 
 mooney_s1_common_8573.user_id = amcritchie_user.id
 mooney_s1_common_8573.nflallday_mint_id = "e51e784b-2cd1-4dc4-af25-902f652b023b"
 mooney_s1_common_8573.nft_serial = 1380479
+mooney_s1_common_8573.latest_flow_transaction_id = '4fe0b7f98296e649131c698b19faa08e5f0d27275b3002aaef35b2d36e4394a4'
 mooney_s1_common_8573.save
 
 # ========================================
@@ -115,6 +124,7 @@ brady_s1_common_3001 = brady_s1_common.moment_mints.find_or_create_by(serial: 30
 brady_s1_common_3001.user_id = amcritchie_user.id
 brady_s1_common_3001.nflallday_mint_id = "0da32a0b-5581-49b3-a352-bd2f65ab8dd7"
 brady_s1_common_3001.nft_serial = 577428
+brady_s1_common_3001.latest_flow_transaction_id = '841d316b92d48597fe20638b58804c1b806d20052677d82c9e634fedddffd9f0'
 brady_s1_common_3001.save
 
 # ========================================
@@ -154,6 +164,7 @@ lawrence_s1_rare_450 = lawrence_s1_rare.moment_mints.find_or_create_by(serial: 4
 lawrence_s1_rare_450.user_id = patty_user.id
 lawrence_s1_rare_450.nflallday_mint_id = "6233cb1b-0cdf-452a-bbbc-376a85acc14a"
 lawrence_s1_rare_450.nft_serial = 1648573
+lawrence_s1_rare_450.latest_flow_transaction_id = '2f305c7260ee1b3e66c2efe43f1784b2ba7ec829ff16865c697ddcf728e08789'
 lawrence_s1_rare_450.save
 
 # ========================================
@@ -193,9 +204,8 @@ mahomes_s1_rare_350 = mahomes_s1_rare.moment_mints.find_or_create_by(serial: 350
 mahomes_s1_rare_350.user_id = patty_user.id
 mahomes_s1_rare_350.nflallday_mint_id = "c69c6ce3-551c-4730-ad24-498f8fcbf339"
 mahomes_s1_rare_350.nft_serial = 688081
+mahomes_s1_rare_350.latest_flow_transaction_id = '119a44fc846999a4c4b5be04c8f4b2c4deb0fadc411fc520860e5e13e9c61f6c'
 mahomes_s1_rare_350.save
-
-
 
 # ========================================
 # Evan McPherson S1 common
@@ -234,7 +244,125 @@ mcpherson_s1_common_833 = mcpherson_s1_common.moment_mints.find_or_create_by(ser
 # Update additional fields
 mcpherson_s1_common_833.nflallday_mint_id = "6d915c78-c1f8-4051-a229-f49a68dbb7c7"
 mcpherson_s1_common_833.nft_serial = 752287
+mcpherson_s1_common_833.latest_flow_transaction_id = '7330b57614192c740b96e8accfebaa93e9eb434c2b6f4bf499198e3d1599e538'
 mcpherson_s1_common_833.save
 
-puts "Create listing ===="
-Listing.create(processing_status: :new)
+# ========================================
+# Justin Herbert S1 rare
+# ========================================
+
+# Find Herbert common low serial for identification
+herbert_s1_rare_low_serial = Moment.calculate_low_serial(59,340744)
+# Find or create Herbert common
+herbert_s1_rare = Moment.find_or_create_by(nft_low_serial: herbert_s1_rare_low_serial)
+# Update additional fields
+herbert_s1_rare.slug = :herbert_s1_rare
+herbert_s1_rare.player_name = "JUSTIN HERBERT"
+herbert_s1_rare.player_number = 10
+herbert_s1_rare.team_name = "Los Angeles Chargers"
+herbert_s1_rare.position = :qb
+herbert_s1_rare.mint_count = 899
+herbert_s1_rare.tier = :rare
+herbert_s1_rare.play_type = :pass
+herbert_s1_rare.series = "Series 1"
+herbert_s1_rare.set = "Launch Codes"
+herbert_s1_rare.badges = [:debut]
+herbert_s1_rare.discord_emoji_description = ":one: :zero: :zap: :football:"
+herbert_s1_rare.game_summary = "CIN 22 - 41 LAC"
+herbert_s1_rare.moment_on = "2021-12-05" #YYYY-MM-DD
+herbert_s1_rare.week = "Week 13"
+herbert_s1_rare.contract = "A.e4cf4bdc1751c65d.AllDay"
+herbert_s1_rare.nfl_all_day_moment_id = "415" # Used for purchase link
+herbert_s1_rare.nfl_all_day_player_id = "00-0036355" # Used for search link
+herbert_s1_rare.description = "Justin Herbert rolled to the right on the play action. He spotted his receiver one-on-one with a defender in the end zone. No problem that he was on the opposite side of the field, right? Herbert loaded up and delivered this deep ball to Jalen Guyton, who wrestled the ball away for the score. Herbert would complete 26 of his 35 passes on the day for 317 yards with three touchdowns and one interception in a 41-22 victory over Cincinnati on Dec. 5, 2021."
+herbert_s1_rare.image_url = "https://assets.nflallday.com/editions/launch_codes/0cb3edc0-435a-4008-b48c-261d0cce5ac6/play_0cb3edc0-435a-4008-b48c-261d0cce5ac6_launch_codes_capture_Hero_Trans_2880_2880_Transparent.png"
+herbert_s1_rare.save
+
+# Find or create Herbert rare 59
+herbert_s1_rare_59 = herbert_s1_rare.moment_mints.find_or_create_by(serial: 59)
+# Update additional fields
+herbert_s1_rare_59.user_id = amcritchie_user.id
+herbert_s1_rare_59.nflallday_mint_id = "a6dce49d-eb7f-41ea-bab7-3645e85bc642"
+herbert_s1_rare_59.nft_serial = 340744
+herbert_s1_rare_59.latest_flow_transaction_id = 'e87369d7abdbb5e43a0740ad2f80cfca7457bbc9a815905f10816f508c475c81'
+herbert_s1_rare_59.save
+
+# ========================================
+# Trey Lance S1 legendary
+# ========================================
+
+# Find Lance common low serial for identification
+lance_s1_legendary_low_serial = Moment.calculate_low_serial(10,1652315)
+# Find or create Lance common
+lance_s1_legendary = Moment.find_or_create_by(nft_low_serial: lance_s1_legendary_low_serial)
+# Update additional fields
+lance_s1_legendary.slug = :lance_s1_legendary
+lance_s1_legendary.player_name = "TREY LANCE"
+lance_s1_legendary.player_number = 5
+lance_s1_legendary.team_name = "San Francisco 49ers"
+lance_s1_legendary.position = :qb
+lance_s1_legendary.mint_count = 49
+lance_s1_legendary.tier = :legendary
+lance_s1_legendary.play_type = :pass
+lance_s1_legendary.series = "Series 1"
+lance_s1_legendary.set = "Rookie Revelation"
+lance_s1_legendary.badges = [:rookie_year, :minted_rookie_year, :debut]
+lance_s1_legendary.discord_emoji_description = ":five: :pick: :football:"
+lance_s1_legendary.game_summary = "SF 23 - 7 HOU"
+lance_s1_legendary.moment_on = "2022-01-02" #YYYY-MM-DD
+lance_s1_legendary.week = "Week 17"
+lance_s1_legendary.contract = "A.e4cf4bdc1751c65d.AllDay"
+lance_s1_legendary.nfl_all_day_moment_id = "677" # Used for purchase link
+lance_s1_legendary.nfl_all_day_player_id = "00-0037012" # Used for search link
+lance_s1_legendary.description = "Trey Lance rolled to his right off the play action before looking back left and eyeing Deebo Samuel deep down the field. Samuel pulled it in around the 10-yard line before slipping past a defender and taking it in for the 45-yard score. Lance finished 16-of-23 on the day for 249 yards with two touchdowns and one interception in the 49ers' 23-7 win over Houston on Jan. 2, 2022."
+lance_s1_legendary.image_url = "https://assets.nflallday.com/editions/rookie_revelation/101848dc-160f-4369-bdff-02f52d41b83f/play_101848dc-160f-4369-bdff-02f52d41b83f_rookie_revelation_capture_Hero_Trans_2880_2880_Transparent.png"
+lance_s1_legendary.save
+
+# Find or create Lance legendary 10
+lance_s1_legendary_10 = lance_s1_legendary.moment_mints.find_or_create_by(serial: 10)
+# Update additional fields
+lance_s1_legendary_10.user_id = flpx_user.id
+lance_s1_legendary_10.nflallday_mint_id = "c2fda622-7fca-4e9c-b5fa-2e5260a01e07"
+lance_s1_legendary_10.nft_serial = 1652315
+lance_s1_legendary_10.latest_flow_transaction_id = '9a32704373d17831972034cb3dcb9ceb0e836714c44e44cc0bfa9d545fc48766'
+lance_s1_legendary_10.save
+
+# ========================================
+# Micah Parsons S1 rare
+# ========================================
+
+# Find Herbert common low serial for identification
+parsons_s1_rare_low_serial = Moment.calculate_low_serial(140,686473)
+# Find or create Herbert common
+parsons_s1_rare = Moment.find_or_create_by(nft_low_serial: parsons_s1_rare_low_serial)
+# Update additional fields
+parsons_s1_rare.slug = :parsons_s1_rare
+parsons_s1_rare.player_name = "MICAH PARSONS"
+parsons_s1_rare.player_number = 11
+parsons_s1_rare.team_name = "Dallas Cowboys"
+parsons_s1_rare.position = :lb
+parsons_s1_rare.mint_count = 699
+parsons_s1_rare.tier = :rare
+parsons_s1_rare.play_type = :sack
+parsons_s1_rare.series = "Series 1"
+parsons_s1_rare.set = "In the Trenches"
+parsons_s1_rare.badges = [:rookie_year, :minted_rookie_year, :debut]
+parsons_s1_rare.discord_emoji_description = ":one: :one: :cowboy: :shield:"
+parsons_s1_rare.game_summary = "WAS 20 - 27 DAL"
+parsons_s1_rare.moment_on = "2021-12-12" #YYYY-MM-DD
+parsons_s1_rare.week = "Week 14"
+parsons_s1_rare.contract = "A.e4cf4bdc1751c65d.AllDay"
+parsons_s1_rare.nfl_all_day_moment_id = "483" # Used for purchase link
+parsons_s1_rare.nfl_all_day_player_id = "00-0036932" # Used for search link
+parsons_s1_rare.description = "Micah Parsons was all over the field for Dallas against Washington. On this play, he broke through the line, eluded a potential block from the running back, and pulled quarterback Taylor Heinicke to the ground for the sack. Parsons finished with three tackles, two sacks, and a forced fumble in the Cowboys' 27-20 win over Washington on Dec. 12, 2021."
+parsons_s1_rare.image_url = "https://assets.nflallday.com/resize/editions/in_the_trenches/ea71ab97-5e26-4369-b609-adfde141d69f/play_ea71ab97-5e26-4369-b609-adfde141d69f_in_the_trenches_capture_Hero_Black_2880_2880_Black.png"
+parsons_s1_rare.save
+
+# Find or create Parsons rare 140
+parsons_s1_rare_140 = parsons_s1_rare.moment_mints.find_or_create_by(serial: 140)
+# Update additional fields
+parsons_s1_rare_140.user_id = amcritchie_user.id
+parsons_s1_rare_140.nflallday_mint_id = "b2552559-919f-40cc-a937-f0993b313e50"
+parsons_s1_rare_140.nft_serial = 686473
+parsons_s1_rare_140.latest_flow_transaction_id = 'c4f769b8b94ccc4dbdbe15501854627a7c5bad2cafc9ba842aeed1adf9aa29bd'
+parsons_s1_rare_140.save

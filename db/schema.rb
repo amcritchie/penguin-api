@@ -85,6 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_214031) do
     t.integer "nft_serial"
     t.json "additional_badges", default: []
     t.string "nflallday_mint_id"
+    t.string "latest_flow_transaction_id"
     t.boolean "burned"
     t.datetime "minted_at"
     t.datetime "created_at", null: false

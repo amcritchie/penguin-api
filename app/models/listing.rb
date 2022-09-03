@@ -30,6 +30,11 @@ class Listing < ApplicationRecord
     update_column(:serial, nft_serial - moment.nft_low_serial + 1) # Extra 1 needed to account for no 0 mint
   end
 
+  def nfl_all_day?
+    # Validate listing is an NFL ALL DAY contract
+    contract_slug == 'nfl_all_day' || contract == "A.e4cf4bdc1751c65d.AllDay.NFT"
+  end
+
   def self.process_payload(payload)
     listing = Listing.create(processing_status: :new)
     # Populate listing details
@@ -45,8 +50,8 @@ class Listing < ApplicationRecord
     # Identify if contract is NFL ALL DAY contract
     listing.contract_slug = :nfl_all_day if listing.contract == "A.e4cf4bdc1751c65d.AllDay.NFT"
     listing.processing_status = :payload_saved
-    # Identify moment based on nft_serial
-    if moment = Moment.find_by_nft_serial(listing.nft_serial)
+    # If NFL ALL DAY listing, Identify moment based on nft_serial
+    if listing.nfl_all_day? && moment = Moment.find_by_nft_serial(listing.nft_serial)
       listing.moment = moment
       listing.processing_status = :moment_identified
       # Idenfity moment_mint based on nft_serial

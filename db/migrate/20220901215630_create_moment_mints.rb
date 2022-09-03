@@ -8,6 +8,7 @@ class CreateMomentMints < ActiveRecord::Migration[7.0]
       t.integer :nft_serial
       t.json :additional_badges, default: []
       t.string :nflallday_mint_id
+      t.string :latest_flow_transaction_id
       t.boolean :burned
       t.datetime :minted_at
 

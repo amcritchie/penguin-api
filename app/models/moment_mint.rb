@@ -25,6 +25,10 @@ class MomentMint < ApplicationRecord
     "https://nflallday.com/moments/#{nflallday_mint_id}"
   end
 
+  def latest_flow_transaction
+    "https://flowscan.org/transaction/#{latest_flow_transaction_id}" unless latest_flow_transaction_id.nil?
+  end
+
   def serial_digit_emoji
     # Find digits in serial
     serial_digits = serial.digits.count
