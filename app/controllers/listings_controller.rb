@@ -23,9 +23,9 @@ class ListingsController < ApplicationController
       # Create message
       message = listing.discord_message
       # Send listing to discord server.
-      external_request = Discord.send_new_listing_to_discord(message)
+      external_request = listing.send_new_listing_to_discord(message)
       # Send to custom server if moment has a specific discord channel.
-      external_request = Discord.send_new_listing_to_discord(message, listing.moment.discord_channel_webhook) if listing.moment.discord_channel_webhook
+      external_request = listing.send_new_listing_to_discord(message, listing.moment.discord_channel_webhook) if listing.moment.discord_channel_webhook
     end
 
     render json: {request: :successful}, status: 200

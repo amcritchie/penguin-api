@@ -19,11 +19,12 @@ class ExternalRequest < ApplicationRecord
     # Unless first execution, archive previous response
     archive_previous_response unless self.execution_count == 1
     self.response_code = request_response.code
-    # self.response_message = request_response.message
-    self.response_body_raw = request_response.body.inspect
+    self.response_message = request_response.message
+    self.response_header = request_response.header
     self.request_duration_ms = (Time.now - request_started)*1000
-    self.response_body = request_response.body # This goes last incase the symbolize_json fails
-    # self.response_body = request_response.body.symbolize_json # This goes last incase the symbolize_json fails
+    # Response Body
+    self.response_body_raw = request_response.body.inspect
+    self.response_body = JSON.parse(request_response.body, symbolize:true) unless request_response.body.nil? # This goes last incase the symbolize_json fails
     # Evaluate response from Authorize.net
     if self.response_code == '200'
       self.successful = true

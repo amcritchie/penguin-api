@@ -3,6 +3,8 @@ class Listing < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :moment_mint, optional: true
 
+  has_many :external_requests, as: :creator, dependent: :destroy
+
   # after_create :initialize_payload
   after_save :populate_slug, :populate_serial
 
@@ -71,6 +73,25 @@ class Listing < ApplicationRecord
     listing
   # ensure
   #   listing.save # Ensure listing is saved
+  end
+
+  def send_new_listing_to_discord(message, channel_webhook=nil)
+    # Define webhook URL.
+    webhook_url = "https://discord.com/api/webhooks/#{ENV["WEBHOOK_KEY"]}/#{ENV["WEBHOOK_TOKEN"]}"
+    # Overwrite webhook_url if channel_webhook was passed.
+    webhook_url = channel_webhook unless channel_webhook.nil?
+    # Create external request.
+    external_request = external_requests.create(
+      key: :discord_new_listing,
+      http_method: :post,
+      ssl: true,
+      url: webhook_url,
+      params: {
+        content: message
+      }
+    )
+    # Execute external request
+    external_request.execute_discord_webhook
   end
 
   def flowscan_transactions_url

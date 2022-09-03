@@ -1,0 +1,12 @@
+<h1>
+  External Requests
+</h1>
+
+<hr>
+<% @external_requests.each do |external_request| %>
+    <h3>external_request <%= external_request.id %></h3>
+    <p>
+      <%= external_request.inspect %>
+    </p>
+  <hr>
+<% end %>

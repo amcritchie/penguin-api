@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :external_requests
+  resources :external_requests, only: [:index]
   resources :listings
   resources :moment_mints
   resources :moments, only: [:index]

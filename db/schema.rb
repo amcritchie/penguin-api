@@ -29,8 +29,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_214031) do
     t.json "params", default: {}
     t.integer "request_duration_ms"
     t.string "response_code"
+    t.string "response_message"
     t.json "response_body", default: {}
     t.json "response_body_raw", default: {}
+    t.json "response_header", default: {}
+    t.json "response_header_raw", default: {}
     t.datetime "first_executed_at"
     t.json "previous_responses", default: []
     t.datetime "created_at", null: false
