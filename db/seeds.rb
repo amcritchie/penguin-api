@@ -38,6 +38,22 @@ flpx_user.save
 # Collection: https://nflallday.com/user/flpx
 # Transactions: https://flowscan.org/account/0x8a2201d25aef092d
 
+# Find or create ryanb2018 user (Quinn Meinerz)
+ryanb_user = User.find_or_create_by(dapper_username: :ryanb2018)
+# Update additional fields
+ryanb_user.flow_account = "0x423c5640dd82c09d"
+ryanb_user.save
+# Collection: https://nflallday.com/user/ryanb2018
+# Transactions: https://flowscan.org/account/0x423c5640dd82c09d
+
+# Find or create bkeby user (Javonte Williams)
+bkeby_user = User.find_or_create_by(dapper_username: :bkeby)
+# Update additional fields
+bkeby_user.flow_account = "0x2cf224283f1a23b7"
+bkeby_user.save
+# Collection: https://nflallday.com/user/ryanb2018
+# Transactions: https://flowscan.org/account/0x423c5640dd82c09d
+
 # ========================================
 # Darnell Mooney S1 common
 # ========================================
@@ -342,9 +358,9 @@ lance_s1_legendary_10.save
 # Micah Parsons S1 rare
 # ========================================
 
-# Find Herbert common low serial for identification
+# Find Parsons common low serial for identification
 parsons_s1_rare_low_serial = Moment.calculate_low_serial(140,686473)
-# Find or create Herbert common
+# Find or create Parsons common
 parsons_s1_rare = Moment.find_or_create_by(nft_low_serial: parsons_s1_rare_low_serial)
 # Update additional fields
 parsons_s1_rare.slug = :parsons_s1_rare
@@ -377,3 +393,144 @@ parsons_s1_rare_140.nflallday_mint_id = "b2552559-919f-40cc-a937-f0993b313e50"
 parsons_s1_rare_140.nft_serial = 686473
 parsons_s1_rare_140.latest_flow_transaction_id = 'c4f769b8b94ccc4dbdbe15501854627a7c5bad2cafc9ba842aeed1adf9aa29bd'
 parsons_s1_rare_140.save
+
+# ========================================
+# Justin Jefferson S1 common
+# ========================================
+
+# Find Jefferson common low serial for identification
+jefferson_s1_common_low_serial = Moment.calculate_low_serial(1978,843432)
+# Find or create Herbert common
+jefferson_s1_common = Moment.find_or_create_by(nft_low_serial: jefferson_s1_common_low_serial)
+# Update additional fields
+jefferson_s1_common.slug = :jefferson_s1_common
+jefferson_s1_common.player_name = "JUSTIN JEFFERSON"
+jefferson_s1_common.player_number = 18
+jefferson_s1_common.team_name = "Minnesota Vikings"
+jefferson_s1_common.position = :wr
+jefferson_s1_common.mint_count = 10000
+jefferson_s1_common.tier = :common
+jefferson_s1_common.play_type = :reception
+jefferson_s1_common.series = "Series 1"
+jefferson_s1_common.set = "Base"
+jefferson_s1_common.badges = [:debut]
+jefferson_s1_common.discord_emoji_description = ":one: :eight: :crown: :open_hands:"
+jefferson_s1_common.game_summary = "CHI 9 - 17 MIN"
+jefferson_s1_common.moment_on = "2021-12-20" #YYYY-MM-DD
+jefferson_s1_common.week = "Week 15"
+jefferson_s1_common.contract = "A.e4cf4bdc1751c65d.AllDay"
+jefferson_s1_common.nfl_all_day_moment_id = "507" # Used for purchase link
+jefferson_s1_common.nfl_all_day_player_id = "00-0036322" # Used for search link
+jefferson_s1_common.description = "Justin Jefferson's fake to the inside and move toward the back corner of the end zone created the space he needed to reel in this pass from quarterback Kirk Cousins for the touchdown. Jefferson caught four passes for 47 yards and this score in a 17-9 Vikings win over Chicago on Dec. 20, 2021."
+jefferson_s1_common.image_url = "https://assets.nflallday.com/editions/base/11e5784f-3562-42f4-88ac-92db99c84628/play_11e5784f-3562-42f4-88ac-92db99c84628_base_capture_Hero_Trans_2880_2880_Transparent.png"
+jefferson_s1_common.save
+
+# Find or create Jefferson common 1978
+jefferson_s1_common_1978 = parsons_s1_rare.moment_mints.find_or_create_by(serial: 1978)
+# Update additional fields
+jefferson_s1_common_1978.user_id = amcritchie_user.id
+jefferson_s1_common_1978.nflallday_mint_id = "544b7804-5187-4b7e-9362-9af2e933c9ee"
+jefferson_s1_common_1978.nft_serial = 843432
+jefferson_s1_common_1978.latest_flow_transaction_id = '886493248a002f925606e96874a64a312c72ec7be4de45c607205e4c42c697ef'
+jefferson_s1_common_1978.save
+
+# ========================================
+# Quinn Meinerz S1 rare
+# ========================================
+
+# Find Meinerz common low serial for identification
+meinerz_s1_rare_low_serial = Moment.calculate_low_serial(54,339341)
+# Find or create Herbert common
+meinerz_s1_rare = Moment.find_or_create_by(nft_low_serial: parsons_s1_rare_low_serial)
+# Update additional fields
+meinerz_s1_rare.slug = :meinerz_s1_rare
+meinerz_s1_rare.player_name = "QUINN MEINERZ"
+meinerz_s1_rare.player_number = 77
+meinerz_s1_rare.team_name = "Denver Broncos"
+meinerz_s1_rare.position = :ol
+meinerz_s1_rare.mint_count = 699
+meinerz_s1_rare.tier = :rare
+meinerz_s1_rare.play_type = :block
+meinerz_s1_rare.series = "Series 1"
+meinerz_s1_rare.set = "In the Trenches"
+meinerz_s1_rare.badges = [:rookie_year, :minted_rookie_year, :debut]
+meinerz_s1_rare.discord_emoji_description = ":seven: :seven: :racehorse: :brown_square:"
+meinerz_s1_rare.game_summary = "KC 22 - 9 DEN"
+meinerz_s1_rare.moment_on = "2021-12-05" #YYYY-MM-DD
+meinerz_s1_rare.week = "Week 13"
+meinerz_s1_rare.contract = "A.e4cf4bdc1751c65d.AllDay"
+meinerz_s1_rare.nfl_all_day_moment_id = "413" # Used for purchase link
+meinerz_s1_rare.nfl_all_day_player_id = "00-0037001" # Used for search link
+meinerz_s1_rare.description = "Quinn Meinerz just kept his legs moving and moved defenders along with him. As the back made his way up the field, there was Meinerz every step of the way to help them push forward. Denver would ultimately fall to Kansas City, 22-9, on Dec. 5, 2021."
+meinerz_s1_rare.image_url = "https://assets.nflallday.com/editions/in_the_trenches/1123ea00-20f9-46b7-b3fa-85394c604115/play_1123ea00-20f9-46b7-b3fa-85394c604115_in_the_trenches_capture_Hero_Trans_2880_2880_Transparent.png"
+meinerz_s1_rare.save
+
+# Find or create Meinerz rare 54
+meinerz_s1_rare_54 = parsons_s1_rare.moment_mints.find_or_create_by(serial: 54)
+# Update additional fields
+meinerz_s1_rare_54.user_id = ryanb_user.id
+meinerz_s1_rare_54.nflallday_mint_id = "74840977-b380-4616-b3a1-0b1ee383347f"
+meinerz_s1_rare_54.nft_serial = 339341
+meinerz_s1_rare_54.latest_flow_transaction_id = 'cfd4d766f8e5d42e520b91bc370257ba252dc6d9a8f20e145647f162e7227f1d'
+meinerz_s1_rare_54.save
+
+# ========================================
+# Javonte Williams S1 common
+# ========================================
+
+# Find Jefferson common low serial for identification
+williams_s1_common_low_serial = Moment.calculate_low_serial(612,445259)
+# Find or create Herbert common
+williams_s1_common = Moment.find_or_create_by(nft_low_serial: williams_s1_common_low_serial)
+# Update additional fields
+williams_s1_common.slug = :williams_s1_common
+williams_s1_common.player_name = "JAVONTE WILLIAMS"
+williams_s1_common.player_number = 33
+williams_s1_common.team_name = "Denver Broncos"
+williams_s1_common.position = :rb
+williams_s1_common.mint_count = 10000
+williams_s1_common.tier = :common
+williams_s1_common.play_type = :reception
+williams_s1_common.series = "Series 1"
+williams_s1_common.set = "Base"
+williams_s1_common.badges = [:debut]
+williams_s1_common.discord_emoji_description = ":three: :three: :racehorse: :open_hands:"
+williams_s1_common.game_summary = "DEN 38 - 10 DET"
+williams_s1_common.moment_on = "2021-12-12" #YYYY-MM-DD
+williams_s1_common.week = "Week 14"
+williams_s1_common.contract = "A.e4cf4bdc1751c65d.AllDay"
+williams_s1_common.nfl_all_day_moment_id = "433" # Used for purchase link
+williams_s1_common.nfl_all_day_player_id = "00-0036997" # Used for search link
+williams_s1_common.description = "Backpedaling. Spinning. Breaking tackles. Javonte Williams did it all while keeping his balance to take this one in for the touchdown against Detroit. Williams carried the ball 15 times for 73 yards and had this catch for 10 yards to go along with two total touchdowns in Denver's 38-10 victory over Detroit on Dec. 12, 2021."
+williams_s1_common.image_url = "https://assets.nflallday.com/editions/base/11e5784f-3562-42f4-88ac-92db99c84628/play_11e5784f-3562-42f4-88ac-92db99c84628_base_capture_Hero_Trans_2880_2880_Transparent.png"
+williams_s1_common.save
+
+# Find or create Williams common 612
+williams_s1_common_612 = parsons_s1_rare.moment_mints.find_or_create_by(serial: 612)
+# Update additional fields
+williams_s1_common_612.user_id = bkeby_user.id
+williams_s1_common_612.nflallday_mint_id = "74840977-b380-4616-b3a1-0b1ee383347f"
+williams_s1_common_612.nft_serial = 445259
+williams_s1_common_612.latest_flow_transaction_id = 'cfd4d766f8e5d42e520b91bc370257ba252dc6d9a8f20e145647f162e7227f1d'
+williams_s1_common_612.save
+
+# To Add
+# [x] JUSTIN JEFFERSON [d] common https://nflallday.com/listing/moment/507
+# [x] QUINN MEINERZ [r,m,d] rare https://nflallday.com/listing/moment/413
+# [x] JAVONTE WILLIAMS [r,m,d] common https://nflallday.com/listing/moment/433
+# JAVONTE WILLIAMS [r,m] legendary https://nflallday.com/listing/moment/991
+# COURTLAND SUTTON common https://nflallday.com/listing/moment/882
+# COURTLAND SUTTON [d] rare https://nflallday.com/listing/moment/668
+# NAJEE HARRIS [r,m,d] rare https://nflallday.com/listing/moment/583
+# KYLE PITTS [r,m] common https://nflallday.com/listing/moment/812
+# KYLE PITTS [r,m,d] legendary https://nflallday.com/listing/moment/551
+# KIRK COUSINS [d] rare https://nflallday.com/listing/moment/487
+# MIKE WILLIAMS [d] rare https://nflallday.com/listing/moment/416
+# MIKE WILLIAMS rare https://nflallday.com/listing/moment/640
+# JUSTIN TUCKER [d] rare https://nflallday.com/listing/moment/952
+# JOSH ALLEN [d] common https://nflallday.com/listing/moment/425
+# AUSTIN EKELER [d] rare https://nflallday.com/listing/moment/639
+# ODELL BECKHAM JR. [r] ultimate https://nflallday.com/listing/moment/1017
+# JONATHAN TAYLOR rare https://nflallday.com/listing/moment/989
+# JONATHAN TAYLOR [d] legendary https://nflallday.com/listing/moment/522
+# JAYLEN WADDLE [r,m,d] legendary https://nflallday.com/listing/moment/608
