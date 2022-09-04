@@ -441,7 +441,7 @@ jefferson_s1_common_1978.save
 # Find Meinerz common low serial for identification
 meinerz_s1_rare_low_serial = Moment.calculate_low_serial(54,339341)
 # Find or create Herbert common
-meinerz_s1_rare = Moment.find_or_create_by(nft_low_serial: parsons_s1_rare_low_serial)
+meinerz_s1_rare = Moment.find_or_create_by(nft_low_serial: meinerz_s1_rare_low_serial)
 # Update additional fields
 meinerz_s1_rare.slug = :meinerz_s1_rare
 meinerz_s1_rare.player_name = "QUINN MEINERZ"
@@ -466,7 +466,7 @@ meinerz_s1_rare.image_url = "https://assets.nflallday.com/editions/in_the_trench
 meinerz_s1_rare.save
 
 # Find or create Meinerz rare 54
-meinerz_s1_rare_54 = parsons_s1_rare.moment_mints.find_or_create_by(serial: 54)
+meinerz_s1_rare_54 = meinerz_s1_rare.moment_mints.find_or_create_by(serial: 54)
 # Update additional fields
 meinerz_s1_rare_54.user_id = ryanb_user.id
 meinerz_s1_rare_54.nflallday_mint_id = "74840977-b380-4616-b3a1-0b1ee383347f"
@@ -518,17 +518,18 @@ williams_s1_common_612.save
 # [x] JUSTIN JEFFERSON [d] common https://nflallday.com/listing/moment/507
 # [x] QUINN MEINERZ [r,m,d] rare https://nflallday.com/listing/moment/413
 # [x] JAVONTE WILLIAMS [r,m,d] common https://nflallday.com/listing/moment/433
+# JOSH ALLEN [d] common https://nflallday.com/listing/moment/425
+# NAJEE HARRIS [r,m,d] rare https://nflallday.com/listing/moment/583
+# OLAMIDE ZACCHEAUS [first base moment #1 = #489] common https://nflallday.com/listing/moment/353
 # JAVONTE WILLIAMS [r,m] legendary https://nflallday.com/listing/moment/991
 # COURTLAND SUTTON common https://nflallday.com/listing/moment/882
 # COURTLAND SUTTON [d] rare https://nflallday.com/listing/moment/668
-# NAJEE HARRIS [r,m,d] rare https://nflallday.com/listing/moment/583
 # KYLE PITTS [r,m] common https://nflallday.com/listing/moment/812
 # KYLE PITTS [r,m,d] legendary https://nflallday.com/listing/moment/551
 # KIRK COUSINS [d] rare https://nflallday.com/listing/moment/487
 # MIKE WILLIAMS [d] rare https://nflallday.com/listing/moment/416
 # MIKE WILLIAMS rare https://nflallday.com/listing/moment/640
 # JUSTIN TUCKER [d] rare https://nflallday.com/listing/moment/952
-# JOSH ALLEN [d] common https://nflallday.com/listing/moment/425
 # AUSTIN EKELER [d] rare https://nflallday.com/listing/moment/639
 # ODELL BECKHAM JR. [r] ultimate https://nflallday.com/listing/moment/1017
 # JONATHAN TAYLOR rare https://nflallday.com/listing/moment/989
