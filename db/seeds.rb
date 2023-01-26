@@ -54,6 +54,69 @@ bkeby_user.save
 # Collection: https://nflallday.com/user/ryanb2018
 # Transactions: https://flowscan.org/account/0x423c5640dd82c09d
 
+# Find or create Big Ticket user
+big_ticket_user = User.find_or_create_by(dapper_username: :BIGTICKET1)
+# Update additional fields
+big_ticket_user.flow_account = "0x92f47a73141913d8"
+big_ticket_user .save
+# Collection: https://nflallday.com/user/BIGTICKET1
+# Transactions: https://flowscan.org/account/0x92f47a73141913d8
+
+# Find or create Alex Undrafted user
+alex_undrafted_user = User.find_or_create_by(dapper_username: :AlexUndrafted)
+# Update additional fields
+alex_undrafted_user.flow_account = "0xfa414bc0941835b8"
+alex_undrafted_user .save
+# Collection: https://nflallday.com/user/AlexUndrafted
+# Transactions: https://flowscan.org/account/0xfa414bc0941835b8
+
+# Find or create OBJ user (OBJ Ultimate)
+obj_user = User.find_or_create_by(dapper_username: :Odell)
+# Update additional fields
+obj_user.flow_account = "0x28bdd0fc044b0399"
+obj_user.save
+# Collection: https://nflallday.com/user/Odell
+# Transactions: https://flowscan.org/account/0x28bdd0fc044b0399
+
+# Find or create MrDracula user (One  of the best gain/loss account on NFL ALL DAY)
+dracula_user = User.find_or_create_by(dapper_username: :MrDracula)
+# Update additional fields
+dracula_user.flow_account = "0xc4ab4a06ade1fd0f"
+dracula_user.save
+# Collection: https://nflallday.com/user/MrDracula
+
+# Find or create Diamond user (Diamond)
+diamond_user = User.find_or_create_by(dapper_username: :catZilla)
+# Update additional fields
+diamond_user.flow_account = "0x9b879eee67d839cc"
+diamond_user.save
+# https://nflallday.com/user/catZilla
+# Transactions: https://flowscan.org/account/0x9b879eee67d839cc
+
+# Find or create Blaze user (AllDay Insider)
+blaze_user = User.find_or_create_by(dapper_username: :blazingarrow42O)
+# Update additional fields
+blaze_user.flow_account = "0x62fef666fdab7c14"
+blaze_user.save
+# Collection: https://nflallday.com/user/blazingarrow42O
+# Transactions: https://flowscan.org/account/0x62fef666fdab7c14
+
+# Find or create Smurph Diesel user (AllDay AllNight)
+smurf_user = User.find_or_create_by(dapper_username: :SmurphDiesel)
+# Update additional fields
+smurf_user.flow_account = "0x77bb1e6cb1380f69"
+smurf_user.save
+# Collection: https://nflallday.com/user/SmurphDiesel
+# Transactions: https://flowscan.org/account/0x77bb1e6cb1380f69
+
+# Find or create 90s FAn user (AllDay AllNight)
+fan90_user = User.find_or_create_by(dapper_username: :90sfan)
+# Update additional fields
+fan90_user.flow_account = "0x67e1ddd9767239e0"
+fan90_user.save
+# Collection: https://nflallday.com/user/90sfan
+# Transactions: https://flowscan.org/account/0x67e1ddd9767239e0
+
 # ========================================
 # Darnell Mooney S1 common
 # ========================================
@@ -64,11 +127,12 @@ mooney_s1_common_low_serial = Moment.calculate_low_serial(6261,1378167)
 mooney_s1_common = Moment.find_or_create_by(nft_low_serial: mooney_s1_common_low_serial)
 # Update additional fields
 mooney_s1_common.slug = :mooney_s1_common
+mooney_s1_common.edition_id = 618 # https://nflallday.com/listing/moment/618
+mooney_s1_common.mint_count = 10000
 mooney_s1_common.player_name = "DARNELL MOONEY"
 mooney_s1_common.player_number = 11
 mooney_s1_common.team_name = "Chicago Bears"
 mooney_s1_common.position = :wr
-mooney_s1_common.mint_count = 10000
 mooney_s1_common.tier = :common
 mooney_s1_common.play_type = :reception
 mooney_s1_common.series = "Series 1"
@@ -113,11 +177,12 @@ brady_s1_common_low_serial = Moment.calculate_low_serial(3001,577428)
 brady_s1_common = Moment.find_or_create_by(nft_low_serial: brady_s1_common_low_serial)
 # Update additional fields
 brady_s1_common.slug = :brady_s1_common
+brady_s1_common.edition_id = 446 # https://nflallday.com/listing/moment/446
+brady_s1_common.mint_count = 10000
 brady_s1_common.player_name = "TOM BRADY"
 brady_s1_common.player_number = 12
 brady_s1_common.team_name = "Tampa Bay Buccaneers"
 brady_s1_common.position = :qb
-brady_s1_common.mint_count = 10000
 brady_s1_common.tier = :common
 brady_s1_common.play_type = :pass
 brady_s1_common.series = "Series 1"
@@ -153,11 +218,12 @@ lawrence_s1_rare_low_serial = Moment.calculate_low_serial(450,1648573)
 lawrence_s1_rare = Moment.find_or_create_by(nft_low_serial: lawrence_s1_rare_low_serial)
 # Update additional fields
 lawrence_s1_rare.slug = :lawrence_s1_rare
+lawrence_s1_rare.edition_id = 669 # https://nflallday.com/listing/moment/669
+lawrence_s1_rare.mint_count = 899
 lawrence_s1_rare.player_name = "TREVOR LAWRENCE"
 lawrence_s1_rare.player_number = 16
 lawrence_s1_rare.team_name = "Jacksonville Jaguars"
 lawrence_s1_rare.position = :qb
-lawrence_s1_rare.mint_count = 899
 lawrence_s1_rare.tier = :rare
 lawrence_s1_rare.play_type = :pass
 lawrence_s1_rare.series = "Series 1"
@@ -193,11 +259,12 @@ mahomes_s1_rare_low_serial = Moment.calculate_low_serial(350,688081)
 mahomes_s1_rare = Moment.find_or_create_by(nft_low_serial: mahomes_s1_rare_low_serial)
 # Update additional fields
 mahomes_s1_rare.slug = :mahomes_s1_rare
+mahomes_s1_rare.edition_id = 485 # https://nflallday.com/listing/moment/485
+mahomes_s1_rare.mint_count = 899
 mahomes_s1_rare.player_name = "PATRICK MAHOMES II"
 mahomes_s1_rare.player_number = 15
 mahomes_s1_rare.team_name = "Kansas City Chiefs"
 mahomes_s1_rare.position = :qb
-mahomes_s1_rare.mint_count = 899
 mahomes_s1_rare.tier = :rare
 mahomes_s1_rare.play_type = :pass
 mahomes_s1_rare.series = "Series 1"
@@ -233,11 +300,12 @@ mcpherson_s1_common_low_serial = Moment.calculate_low_serial(833,752287)
 mcpherson_s1_common = Moment.find_or_create_by(nft_low_serial: mcpherson_s1_common_low_serial)
 # Update additional fields
 mcpherson_s1_common.slug = :mcpherson_s1_common
+mcpherson_s1_common.edition_id = 498 # https://nflallday.com/listing/moment/498
+mcpherson_s1_common.mint_count = 10000
 mcpherson_s1_common.player_name = "EVAN MCPHERSON"
 mcpherson_s1_common.player_number = 2
 mcpherson_s1_common.team_name = "Cincinnati Bengals"
 mcpherson_s1_common.position = :k
-mcpherson_s1_common.mint_count = 10000
 mcpherson_s1_common.tier = :common
 mcpherson_s1_common.play_type = :field_goal
 mcpherson_s1_common.series = "Series 1"
@@ -273,11 +341,12 @@ herbert_s1_rare_low_serial = Moment.calculate_low_serial(59,340744)
 herbert_s1_rare = Moment.find_or_create_by(nft_low_serial: herbert_s1_rare_low_serial)
 # Update additional fields
 herbert_s1_rare.slug = :herbert_s1_rare
+herbert_s1_rare.edition_id = 415 # https://nflallday.com/listing/moment/415
+herbert_s1_rare.mint_count = 899
 herbert_s1_rare.player_name = "JUSTIN HERBERT"
 herbert_s1_rare.player_number = 10
 herbert_s1_rare.team_name = "Los Angeles Chargers"
 herbert_s1_rare.position = :qb
-herbert_s1_rare.mint_count = 899
 herbert_s1_rare.tier = :rare
 herbert_s1_rare.play_type = :pass
 herbert_s1_rare.series = "Series 1"
@@ -324,11 +393,12 @@ lance_s1_legendary_low_serial = Moment.calculate_low_serial(10,1652315)
 lance_s1_legendary = Moment.find_or_create_by(nft_low_serial: lance_s1_legendary_low_serial)
 # Update additional fields
 lance_s1_legendary.slug = :lance_s1_legendary
+lance_s1_legendary.edition_id = 677 # https://nflallday.com/listing/moment/677
+lance_s1_legendary.mint_count = 49
 lance_s1_legendary.player_name = "TREY LANCE"
 lance_s1_legendary.player_number = 5
 lance_s1_legendary.team_name = "San Francisco 49ers"
 lance_s1_legendary.position = :qb
-lance_s1_legendary.mint_count = 49
 lance_s1_legendary.tier = :legendary
 lance_s1_legendary.play_type = :pass
 lance_s1_legendary.series = "Series 1"
@@ -364,11 +434,12 @@ parsons_s1_rare_low_serial = Moment.calculate_low_serial(140,686473)
 parsons_s1_rare = Moment.find_or_create_by(nft_low_serial: parsons_s1_rare_low_serial)
 # Update additional fields
 parsons_s1_rare.slug = :parsons_s1_rare
+parsons_s1_rare.edition_id = 483 # https://nflallday.com/listing/moment/483
+parsons_s1_rare.mint_count = 699
 parsons_s1_rare.player_name = "MICAH PARSONS"
 parsons_s1_rare.player_number = 11
 parsons_s1_rare.team_name = "Dallas Cowboys"
 parsons_s1_rare.position = :lb
-parsons_s1_rare.mint_count = 699
 parsons_s1_rare.tier = :rare
 parsons_s1_rare.play_type = :sack
 parsons_s1_rare.series = "Series 1"
@@ -404,11 +475,12 @@ jefferson_s1_common_low_serial = Moment.calculate_low_serial(1978,843432)
 jefferson_s1_common = Moment.find_or_create_by(nft_low_serial: jefferson_s1_common_low_serial)
 # Update additional fields
 jefferson_s1_common.slug = :jefferson_s1_common
+jefferson_s1_common.edition_id = 507 # https://nflallday.com/listing/moment/507
+jefferson_s1_common.mint_count = 10000
 jefferson_s1_common.player_name = "JUSTIN JEFFERSON"
 jefferson_s1_common.player_number = 18
 jefferson_s1_common.team_name = "Minnesota Vikings"
 jefferson_s1_common.position = :wr
-jefferson_s1_common.mint_count = 10000
 jefferson_s1_common.tier = :common
 jefferson_s1_common.play_type = :reception
 jefferson_s1_common.series = "Series 1"
@@ -444,11 +516,12 @@ meinerz_s1_rare_low_serial = Moment.calculate_low_serial(54,339341)
 meinerz_s1_rare = Moment.find_or_create_by(nft_low_serial: meinerz_s1_rare_low_serial)
 # Update additional fields
 meinerz_s1_rare.slug = :meinerz_s1_rare
+meinerz_s1_rare.edition_id = 413 # https://nflallday.com/listing/moment/413
+meinerz_s1_rare.mint_count = 699
 meinerz_s1_rare.player_name = "QUINN MEINERZ"
 meinerz_s1_rare.player_number = 77
 meinerz_s1_rare.team_name = "Denver Broncos"
 meinerz_s1_rare.position = :ol
-meinerz_s1_rare.mint_count = 699
 meinerz_s1_rare.tier = :rare
 meinerz_s1_rare.play_type = :block
 meinerz_s1_rare.series = "Series 1"
@@ -484,11 +557,12 @@ williams_s1_common_low_serial = Moment.calculate_low_serial(612,445259)
 williams_s1_common = Moment.find_or_create_by(nft_low_serial: williams_s1_common_low_serial)
 # Update additional fields
 williams_s1_common.slug = :williams_s1_common
+williams_s1_common.edition_id = 433 # https://nflallday.com/listing/moment/433
+williams_s1_common.mint_count = 10000
 williams_s1_common.player_name = "JAVONTE WILLIAMS"
 williams_s1_common.player_number = 33
 williams_s1_common.team_name = "Denver Broncos"
 williams_s1_common.position = :rb
-williams_s1_common.mint_count = 10000
 williams_s1_common.tier = :common
 williams_s1_common.play_type = :reception
 williams_s1_common.series = "Series 1"
@@ -514,10 +588,74 @@ williams_s1_common_612.nft_serial = 445259
 williams_s1_common_612.latest_flow_transaction_id = 'cfd4d766f8e5d42e520b91bc370257ba252dc6d9a8f20e145647f162e7227f1d'
 williams_s1_common_612.save
 
+
+# ========================================
+# S2 Floor Commons
+# ========================================
+
+# Find low serial for identification
+# https://nflallday.com/user/zainb
+# https://flowscan.org/transaction/79c7b69620c3bb56c66c27e05a28b5ccea9b68523964a0ec0e859771cc3c1462/script
+hopkins_s2_common_low_serial = Moment.calculate_low_serial(134,3941137)
+# Find or create Herbert common
+hopkins_s2_common = Moment.find_or_create_by(nft_low_serial: hopkins_s2_common_low_serial)
+# Update additional fields
+hopkins_s2_common.slug = :hopkins_s2_common
+hopkins_s2_common.edition_id = 1220 # https://nflallday.com/listing/moment/1220
+hopkins_s2_common.mint_count = 10000
+hopkins_s2_common.player_name = "DEANDRE HOPKINS"
+hopkins_s2_common.save
+
+# Find low serial for identification
+# https://nflallday.com/user/NFLNFTease
+# https://flowscan.org/transaction/0818fc065faad90293903ba8f4e33515ecd2ab0f090dcdceaed62d3c769892b2/script
+murray_s2_common_low_serial = Moment.calculate_low_serial(7415,4043614)
+# Find or create Herbert common
+murray_s2_common = Moment.find_or_create_by(nft_low_serial: murray_s2_common_low_serial)
+# Update additional fields
+murray_s2_common.slug = :murray_s2_common
+murray_s2_common.edition_id = 1222 # https://nflallday.com/listing/moment/1222
+murray_s2_common.mint_count = 10000
+murray_s2_common.player_name = "LATAVIUS MURRAY"
+murray_s2_common.save
+
+# Find low serial for identification
+# https://nflallday.com/user/Girldad3X
+# https://flowscan.org/transaction/78293d76063a4777c750d4d5a8f460d871f5beaac16f82a651516a5bc63cff38/script
+goff_s2_common_low_serial = Moment.calculate_low_serial(793,4047092)
+# Find or create Herbert common
+goff_s2_common = Moment.find_or_create_by(nft_low_serial: goff_s2_common_low_serial)
+# Update additional fields
+goff_s2_common.slug = :goff_s2_common
+goff_s2_common.edition_id = 1223 # https://nflallday.com/listing/moment/1223
+goff_s2_common.mint_count = 10000
+goff_s2_common.player_name = "JARED GOFF"
+goff_s2_common.save
+
+# Find low serial for identification
+# https://nflallday.com/user/miktoshi
+# https://flowscan.org/transaction/eae3d071745a4fde15c268258499baf8a5337ca72b1f2fc0ca3601e08821d42c/script
+sherfield_s2_common_low_serial = Moment.calculate_low_serial(31,4073230)
+# Find or create Herbert common
+sherfield_s2_common = Moment.find_or_create_by(nft_low_serial: sherfield_s2_common_low_serial)
+# Update additional fields
+sherfield_s2_common.slug = :sherfield_s2_common
+sherfield_s2_common.edition_id = 1226 # https://nflallday.com/listing/moment/1226
+sherfield_s2_common.mint_count = 10000
+sherfield_s2_common.player_name = "TRENT SHERFIELD"
+sherfield_s2_common.save
+
+# OBJ #3
+# Moment: https://nflallday.com/moments/c0a732dc-a6df-4ca1-9943-c2d5911d69b8
+# Transaction https://flowscan.org/transaction/93e3ce4295fa5861f4827b2b8034ca1a8d076cd14cc7ce001b6713beba4113c5
+
 # To Add
 # [x] JUSTIN JEFFERSON [d] common https://nflallday.com/listing/moment/507
 # [x] QUINN MEINERZ [r,m,d] rare https://nflallday.com/listing/moment/413
 # [x] JAVONTE WILLIAMS [r,m,d] common https://nflallday.com/listing/moment/433
+# [All Badge] Justin Fields [r,j,1,m,d] common - https://nflallday.com/moments/50cc4708-cf43-48b3-9aa3-e65a0974c3a7
+# [Jersey + Champ] Von Miller [c,j,d] lego - https://nflallday.com/moments/d8dcdcd9-238b-421f-a84a-73ea4a54cf6c
+# [#1 + Champ] Cooper Kupp [c,1,d] rare - https://nflallday.com/moments/2190fb3d-8a6b-45b1-9164-5854c7570582
 # JOSH ALLEN [d] common https://nflallday.com/listing/moment/425
 # NAJEE HARRIS [r,m,d] rare https://nflallday.com/listing/moment/583
 # OLAMIDE ZACCHEAUS [first base moment #1 = #489] common https://nflallday.com/listing/moment/353

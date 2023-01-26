@@ -1,6 +1,7 @@
 class CreateMoments < ActiveRecord::Migration[7.0]
   def change
     create_table :moments do |t|
+      t.integer :edition_id
       t.string :slug
       t.string :player_name
       t.integer :player_number
