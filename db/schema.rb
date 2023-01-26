@@ -106,6 +106,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_214031) do
   end
 
   create_table "moments", force: :cascade do |t|
+    t.integer "edition_id"
     t.string "slug"
     t.string "player_name"
     t.integer "player_number"

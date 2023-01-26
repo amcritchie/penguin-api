@@ -110,7 +110,7 @@ smurf_user.save
 # Transactions: https://flowscan.org/account/0x77bb1e6cb1380f69
 
 # Find or create 90s FAn user (AllDay AllNight)
-fan90_user = User.find_or_create_by(dapper_username: :90sfan)
+fan90_user = User.find_or_create_by(dapper_username: '90sfan')
 # Update additional fields
 fan90_user.flow_account = "0x67e1ddd9767239e0"
 fan90_user.save
