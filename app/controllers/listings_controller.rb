@@ -12,7 +12,11 @@ class ListingsController < ApplicationController
     # Validate listing is for NFL ALL DAY
     return not_nfl_all_day_transaction(listing) unless listing.contract_slug == "nfl_all_day"
 
-    if listing.price == 100 || listing.price == 33300
+    puts "x"*60
+    puts listing.inspect
+    puts "x"*60
+
+    if listing.price == 100 || listing.price == "33300.0"
       puts "="*60
       puts "$1 Listing"
       puts "="*60
